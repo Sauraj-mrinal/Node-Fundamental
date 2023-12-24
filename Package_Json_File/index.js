@@ -9,7 +9,6 @@
 
 // how to make it
 // check the file in details 
-
 // install external package 
 
 //--------------------------------------------------------------------------------------------------------------------
@@ -41,7 +40,8 @@ console.log(colors.inverse('inverse the color')); // inverses the color
 console.log(colors.rainbow('OMG Rainbows!')); // rainbow
 console.log(colors.trap('Run the trap')); // Drops the bass
 
-
+// is nodejs single threaded or multi threaded 
+//-------> it is a single thread
 
 
 
