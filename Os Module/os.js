@@ -2,6 +2,10 @@ const os = require('os');
 console.log(os.arch());
 // output -x64
 
+// free memory
+const freeMemory = os.freeMemory
+console.log(freeMemory);
+
 console.log(os.platform());// it shows system platform
 // output - win32
 

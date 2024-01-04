@@ -10,7 +10,7 @@
 //------------------------------------------------------------------------
 const fs = require('fs');// import global module fs
 //fs.mkdirSync('Mrinal')
-
+ 
 //fs.writeFileSync('Mrinal/bio.txt', "My name is mrinal sauraj");
 
 //const data  = fs.readFileSync("Mrinal/bio.txt");
