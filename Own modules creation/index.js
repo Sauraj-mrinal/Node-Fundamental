@@ -22,6 +22,7 @@ const add = ((a,b)=>{
             
 
         })
+        let name = "Murari sing";
 // we have to write like this
 module.exports.add=add; 
 module.exports.sub=sub; 
@@ -30,4 +31,4 @@ module.exports.mul=mul;
 
 // we can export different ways
 
-module.exports = {add,sub, mul}
+module.exports = {add,sub, mul, name}

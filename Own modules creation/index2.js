@@ -31,11 +31,17 @@ console.log(opt_obj.mul(2,4));
 
 // so if opt_obj is a object the in place of opt_obj we can write 
 
-const {add,sub, mul} = require("./index");
+const {add,sub, mul,name } = require("./index");
 
 console.log(add(22,4));//26 
 
 // it is a easy process 
+
+console.log(name );// Murari sing
+
+
+//----------------------------------------------------------------
+// so here we just learn how to 
 
 
 
