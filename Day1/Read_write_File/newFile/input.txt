@@ -1,0 +1,4 @@
+Data read from input.txt Data read from input.txt hii my name is mrinal sauraj
+ 
+Date created Thu Jan 25 2024 13:09:04 GMT+0530 (India Standard Time) 
+Date created Thu Jan 25 2024 13:09:13 GMT+0530 (India Standard Time)
