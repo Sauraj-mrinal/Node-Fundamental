@@ -16,6 +16,7 @@ next();
 })
 app.use((req, res, next)=>{
     console.log("this is second middleware function");
+    res.send('<h1> hii my name is mrinal </h1>');
 })
 
 const server = http.createServer(app)
