@@ -4,6 +4,7 @@
 let port =3000;
 const http = require('http');
 
+// what ever my client is sending it come inside my req 
 const server = http.createServer( (req,res)=>{
    console.log(req);
 })

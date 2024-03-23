@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+      .post-image {
+        width: 100px; /* Set the desired width */
+        height: 100px; /* Set the desired height */
+        object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+        border: 2px solid #ccc; /* Optional: Add a border for styling */
+        border-radius: 50%; /* Optional: Create a circular shape */
+      };`
+      
     const postForm = document.getElementById('postForm');
     const postsContainer = document.getElementById('posts');
 
@@ -29,9 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayPost(post) {
         const postElement = document.createElement('div');
         postElement.classList.add('post');
-        postElement.innerHTML = `
+        postElement.innerHTML = `<div class=post>
             <img src="${post.imageLink}" alt="Post Image">
-            <p>${post.description}</p>
+            <p>${post.description}</p> </div>
             <form class="commentForm">
                 <input type="text" placeholder="Add comment" required>
                 <button type="submit">Comment</button>
