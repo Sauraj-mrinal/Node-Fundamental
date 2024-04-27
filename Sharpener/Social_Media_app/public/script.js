@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const styleElement = document.createElement('style');
     styleElement.textContent = `
       .post-image {
-        width: 100px; /* Set the desired width */
-        height: 100px; /* Set the desired height */
+        width: 800px; /* Set the desired width */
+        height: 800px; /* Set the desired height */
         object-fit: cover; /* Maintain aspect ratio and cover the entire container */
         border: 2px solid #ccc; /* Optional: Add a border for styling */
         border-radius: 50%; /* Optional: Create a circular shape */
