@@ -106,7 +106,7 @@ const fs = require('fs/promises');
 
 // Read File
     try {
-    const data =  fs.readFile('readme.txt');
+    const data =  fs.readFile('readme.txt' , 'utf8');// if we not write uf8 then it will give us only buffer data 
     console.log(data);
     } catch (error) {
     console.log(error);
@@ -138,6 +138,8 @@ const fs = require('fs/promises');
 // } catch (error) {
 //  console.log(error);
 // }
+//--------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 
 
 
