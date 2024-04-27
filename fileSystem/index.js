@@ -4,7 +4,7 @@
 //--------------------------------------------------------------------------
 // • Promise Based API
 	
-// so it is use to intract with files 
+// so it is use to interact with files 
 
 // to use fs module we have 3 ways 
 //1) promise API----------------------
