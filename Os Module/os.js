@@ -20,6 +20,8 @@
 
 // totalmem() – Returns the total amount of system memory in bytes as an integer.
 
+// import os module we can write like 
+
 const os = require('os');
 console.log(os.arch());
 // output -x64
