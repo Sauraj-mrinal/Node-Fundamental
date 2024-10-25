@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        /* Your CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background-color: #f0f0f0;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="signupForm">
+        <h2>Sign Up</h2>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <button type="submit">Sign Up</button>
+        <p>Already have an account? <a href="login.html">Log in here</a></p>
+    </form>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
