@@ -1,91 +1,50 @@
-const { findUserByEmail, createUser } = require('../models/userModel');
+// In userController.js
+const db = require('../database'); // Import your database connection
 
-// Signup controller function
+
+// const home = (req,res)=>{
+//     res.send("hii i am home ")
+// }
+// Signup function
 const signup = (req, res) => {
-    // Receive name, email, and password from the request body
-    const { name, email, password } = req.body; 
+    const { name, email, password } = req.body;
 
-    // Check if the user already exists
-    findUserByEmail(email, (err, results) => {
+    // Check if user already exists
+    db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
         if (err) {
-            return res.status(500).json({ error: 'Database error' }); // Internal server error
+            return res.status(500).json({ error: 'Database query error' });
         }
 
-        // If user already exists, respond with a 400 error
         if (results.length > 0) {
-            return res.status(400).json({ error: 'User already exists' }); // User already exists
+            return res.status(400).json({ error: 'User already exists' });
         }
 
-        // Create a new user
-        createUser(name, email, password, (err) => {
+        // Insert new user
+        db.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, password], (err) => {
             if (err) {
-                return res.status(500).json({ error: 'Failed to register user' }); // Registration failure
+                return res.status(500).json({ error: 'Failed to create user' });
             }
-
-            // Respond with a success message
-            res.status(201).json({ message: 'User registered successfully' }); // Success message
+            return res.status(201).json({ message: 'User created successfully' });
         });
     });
 };
 
-// Login controller function
-// const login = (req, res) => {
-//     // Receive email and password from the request body
-//     const { email, password } = req.body; 
-
-//     // Check if the user exists by email
-//     findUserByEmail(email, (err, results) => {
-//         if (err) {
-//             return res.status(500).json({ error: 'Database error' }); // Internal server error
-//         }
-
-//         // If user does not exist, respond with a 404 error
-//         if (results.length === 0) {
-//             return res.status(404).json({ error: 'User not found' }); // User not found
-//         }
-
-//         const user = results[0]; // Get the first user from the results
-
-//         // Check if the password matches (You should use a hashing function in production)
-//         if (user.password !== password) {
-//             return res.status(401).json({ error: 'User not authorized' }); // Unauthorized access
-//         }
-
-//         // Successful login
-//         res.status(200).json({ message: 'User login successful' }); // Send success message
-//     });
-// };
+// Login function
 const login = (req, res) => {
     const { email, password } = req.body;
 
-    // Check if the user exists by email
-    findUserByEmail(email, (err, results) => {
+    // Authenticate user
+    db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (err, results) => {
         if (err) {
-            return res.status(500).json({ error: 'Database error' });
+            return res.status(500).json({ error: 'Database query error' });
         }
 
-        // If user does not exist, respond with a 404 error
         if (results.length === 0) {
-            return res.status(404).json({ error: 'User not found' });
+            return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        const user = results[0];
-
-        // Check if the password matches
-        if (user.password !== password) {
-            return res.status(401).json({ error: 'User not authorized' });
-        }
-
-        // Successful login - Send userId in response
-        res.status(200).json({
-            success: true,
-            userId: user.id, // Send user ID
-            message: 'Login successful'
-        });
+        return res.status(200).json({ message: 'Login successful', user: results[0] });
     });
 };
-// Export both signup and login functions
-module.exports = { signup, login }; 
 
-
-
+module.exports = { signup, login  };

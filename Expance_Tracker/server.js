@@ -1,32 +1,33 @@
-const express = require('express'); // Import express
-const userRoutes = require('./routes/userRoutes'); // Import the user routes
-const expenseRoutes = require('./routes/expenseRoutes');
-const path = require('path'); // Import path module
-const app = express(); // Create an express application
-const PORT = 8000; // Define the port
+const express = require('express');
+const path = require('path');
+const userRoutes = require('./routes/userRoutes');
+const fetchRouter = require('./controllers/userController')
+// const expenseRoutes = require('./routes/expenseRoutes');
+const app = express();
+const PORT = 8500;
 
-// Middleware to parse JSON data
+// Middleware to parse JSON
 app.use(express.json());
 
-// Serve static frontend files
+// Serve static files from the "public" folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Use the user routes for API calls
-app.use('/api', userRoutes); // Ensure this line exists
-app.use('/api', expenseRoutes); // Expense API routes
-
-
-// Route to serve expenses.html after successful login
-app.get('/expenses.html', (req, res) => {
+// Routes
+app.use('/api', userRoutes); // User routes (e.g., signup, login)
+// app.use('/api',expenseRoutes)
+// Serve HTML pages for signup and login
+app.get('/signup', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'signup.html'));
+});
+// app.get('/home',userRoutes);
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+app.get('/expanse',(req,res)=>{
     res.sendFile(path.join(__dirname, 'public', 'expenses.html'));
 });
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`); // Log the server start
+    console.log(`Server running on http://localhost:${PORT}`);
 });
-
-
-
-
-
